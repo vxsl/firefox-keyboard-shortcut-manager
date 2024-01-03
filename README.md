@@ -34,7 +34,7 @@ For example, to
 
 ### If something breaks:
 
-However, for safety, it makes a backup copy of the untouched `omni.ja` file on its first run.
+This script makes a backup copy of the untouched `omni.ja` file on its first run.
 
 If the script somehow breaks your Firefox installation (sorry!), this should reset Firefox to its original state:
 
