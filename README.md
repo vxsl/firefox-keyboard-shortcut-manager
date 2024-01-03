@@ -8,7 +8,7 @@ Linux convenience script for easily disabling or unreserving hardcoded Firefox k
 
 I wanted to make this since <Ctrl+w> annoyingly closed the tab when using Leetcode in Vim mode. The manual steps laid out in the above article were painful to go through each time the Firefox package was updated on my system.
 
-The script is generalized, so any command could potentially be unreserved or disabled if you find the string in the [Commands](#commands) section or in [mainKeyset.xhtml](mainKeyset.xhtml).
+The script is generalized though, so any command found in the [Commands](#commands) section or in [mainKeyset.xhtml](mainKeyset.xhtml) can be unreserved or disabled.
 
 ### Initial setup
 
