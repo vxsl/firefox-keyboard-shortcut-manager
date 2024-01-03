@@ -1,8 +1,19 @@
-Convenience script based on [Gautam Iyer's article about disabling or unreserving Firefox keyboard shortcuts](https://www.math.cmu.edu/~gautam/sj/blog/20220329-firefox-disable-ctrl-w.html).
+### What is this?
 
-### Initial setup:
+Linux convenience script for easily disabling or unreserving hardcoded Firefox keyboard shortcuts based on [Gautam Iyer's article](https://www.math.cmu.edu/~gautam/sj/blog/20220329-firefox-disable-ctrl-w.html).
+
+#### **This script is provided as is, without any warranty or guarantee of any kind. Use at your own risk.**
+
+### Why?
+
+I wanted to make this since <Ctrl+w> annoyingly closed the tab when using Leetcode in Vim mode. The manual steps laid out in the above article were painful to go through each time the Firefox package was updated on my system.
+
+The script is generalized, so any command could potentially be unreserved or disabled if you find the string in the [Commands](#commands) section or in [mainKeyset.xhtml](mainKeyset.xhtml).
+
+### Initial setup
 
 ```shell
+apt-get install xmlstarlet # or equivalent for your system's package manager
 git clone https://github.com/vxsl/firefox-keyboard-shortcut-manager
 cd firefox-keyboard-shortcut-manager
 chmod +x run.sh
@@ -10,22 +21,33 @@ chmod +x run.sh
 
 ### Example
 
-For example, to allow addons to use `ctrl+w` (i.e. _unreserve_ `ctrl+w`) and prevent `about:processes` from opening on `shift+Esc` (i.e. _disable_ `View:AboutProcesses`):
+For example, to
+
+1. allow addons to use <Ctrl+w> (i.e. _unreserve_ `cmd_close`), and
+2. prevent "about:processes" from opening on <shift+Esc> (i.e. _disable_ `View:AboutProcesses`):
 
 ```shell
 ./run.sh --remove View:AboutProcesses
 ./run.sh --unreserve cmd_close
+# then restart Firefox process
 ```
 
 ### If something breaks:
 
+However, for safety, it makes a backup copy of the untouched `omni.ja` file on its first run.
+
+If the script somehow breaks your Firefox installation (sorry!), this should reset Firefox to its original state:
+
 ```shell
 ./run.sh --reset
+# then restart Firefox process
 ```
+
+If that doesn't work, uninstalling then reinstalling Firefox using your distro's package manager will resolve any further issues.
 
 ### Commands
 
-At the time of writing, some commands that appear to be modifiable using this method are as follows. An excerpt of `browser.xhtml` titled `mainKeyset.xhtml` is included in this repository for reference.
+At the time of writing, some commands that appear to be modifiable using this method are as follows. For reference, an excerpt of `browser.xhtml` titled [mainKeyset.xhtml](mainKeyset.xhtml) is included in this repository.
 
     - cmd_newNavigator
     - cmd_newNavigatorTabNoEvent
